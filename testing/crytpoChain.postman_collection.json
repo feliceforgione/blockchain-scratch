@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "a710162e-4f6c-4db2-9eb9-c75364367fa8",
+		"name": "crytpoChain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20496691"
+	},
+	"item": [
+		{
+			"name": "GET blocks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/blocks",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"blocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET blocks/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/blocks/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"blocks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST block",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": \"foo-data\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/mine",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST transact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 75,\r\n    \"recipient\": \"foo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/transact",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"transact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET transaction pool",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/transaction-pool-map",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"transaction-pool-map"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET transaction pool Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/transaction-pool-map",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"transaction-pool-map"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET mine-transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/mine-transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mine-transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET wallet-info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/wallet-info",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"wallet-info"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
