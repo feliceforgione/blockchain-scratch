@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
@@ -8,11 +9,14 @@ const Wallet = require("./src/wallet");
 const TransactionMiner = require("./src/app/transaction-miner");
 const seedData = require("./src/seedData");
 
+const isDevelopment = process.env.ENV === "development";
+const REDIS_URL = isDevelopment ? process.env.REDIS_URL : "";
+
 const app = express();
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
-const pubsub = new PubSub({ blockchain, transactionPool });
+const pubsub = new PubSub({ blockchain, transactionPool, redisURL: REDIS_URL });
 const transactionMiner = new TransactionMiner({
   blockchain,
   transactionPool,
@@ -20,8 +24,8 @@ const transactionMiner = new TransactionMiner({
   pubsub,
 });
 
-const DEFAULT_PORT = 3000;
-const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
+const DEFAULT_PORT = Number(process.env.PORT);
+const ROOT_NODE_ADDRESS = `${process.env.HOST}:${DEFAULT_PORT}`;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "./client/dist")));
@@ -138,12 +142,15 @@ function syncTransactionPool() {
     });
 }
 
-seedData({
-  wallet,
-  blockchain,
-  transactionPool,
-  transactionMiner,
-});
+// seed data only used in development
+if (isDevelopment) {
+  seedData({
+    wallet,
+    blockchain,
+    transactionPool,
+    transactionMiner,
+  });
+}
 
 let PEER_PORT;
 
@@ -154,7 +161,7 @@ if (process.env.GENERATE_PEER_PORT === "true") {
 const PORT = PEER_PORT || DEFAULT_PORT;
 
 app.listen(PORT, () => {
-  console.log(`Server is up: http://localhost:${PORT}`);
+  console.log(`Server is up: ${process.env.HOST}:${PORT}`);
   if (PORT === PEER_PORT) {
     syncChains();
     syncTransactionPool();
