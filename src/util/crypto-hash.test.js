@@ -1,4 +1,4 @@
-const cryptHash = require("./crypto-hash.js");
+const cryptHash = require("./crypto-hash");
 
 describe("crypto-hash()", () => {
   it("will return a SHA-256 hashed output", () => {
@@ -15,7 +15,7 @@ describe("crypto-hash()", () => {
   it("produces a unique hash when the properties have changed on an input", () => {
     const foo = {};
     const originalHash = cryptHash(foo);
-    foo["a"] = "a";
+    foo.a = "a";
 
     expect(cryptHash(foo)).not.toEqual(originalHash);
   });

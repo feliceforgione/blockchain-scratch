@@ -9,7 +9,7 @@ const seedData = ({
   transactionPool,
   transactionMiner,
 }) => {
-  const generateWalletTransaction = ({ wallet, recipient, amount }) => {
+  const generateWalletTransaction = ({ recipient, amount }) => {
     const transaction = wallet.createTransaction({
       recipient,
       amount,

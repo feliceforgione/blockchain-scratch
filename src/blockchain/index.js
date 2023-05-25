@@ -1,5 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-else-return */
 const Block = require("./block");
-const { cryptoHash } = require("../util/");
+const { cryptoHash } = require("../util");
 const { REWARD_INPUT, MINING_REWARD } = require("../config");
 const Transaction = require("../wallet/transaction");
 const Wallet = require("../wallet");
@@ -15,7 +17,7 @@ class Blockchain {
       const tranasactionSet = new Set();
       let rewardTransactionCount = 0;
 
-      for (let transaction of block.data) {
+      for (const transaction of block.data) {
         if (transaction.input.address === REWARD_INPUT.address) {
           rewardTransactionCount++;
 
@@ -98,6 +100,7 @@ class Blockchain {
     }
     return true;
   }
+
   addBlock({ data }) {
     const lastBlock = this.chain[this.chain.length - 1];
     const newBlock = Block.mineBlock({ lastBlock, data });

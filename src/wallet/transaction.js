@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const { verifySignature } = require("../util/");
+const { verifySignature } = require("../util");
 const { MINING_REWARD, REWARD_INPUT } = require("../config");
 
 class Transaction {
@@ -57,11 +57,10 @@ class Transaction {
     if (!this.outputMap[recipient]) {
       this.outputMap[recipient] = amount;
     } else {
-      this.outputMap[recipient] = this.outputMap[recipient] + amount;
+      this.outputMap[recipient] += amount;
     }
 
-    this.outputMap[senderWallet.publicKey] =
-      this.outputMap[senderWallet.publicKey] - amount;
+    this.outputMap[senderWallet.publicKey] -= amount;
 
     this.input = this.createInput({ senderWallet, outputMap: this.outputMap });
   }

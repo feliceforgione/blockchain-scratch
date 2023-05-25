@@ -4,7 +4,10 @@ const { verifySignature } = require("../util");
 const { REWARD_INPUT, MINING_REWARD } = require("../config");
 
 describe("Transaction", () => {
-  let transaction, senderWallet, recipient, amount;
+  let transaction;
+  let senderWallet;
+  let recipient;
+  let amount;
 
   beforeEach(() => {
     senderWallet = new Wallet();
@@ -93,7 +96,10 @@ describe("Transaction", () => {
     });
 
     describe("update()", () => {
-      let originalSignature, originalSenderOutput, nextRecipient, nextAmount;
+      let originalSignature;
+      let originalSenderOutput;
+      let nextRecipient;
+      let nextAmount;
 
       describe("and the amount is invalid", () => {
         it("throws an error", () => {
@@ -171,7 +177,8 @@ describe("Transaction", () => {
     });
 
     describe("rewardTransaction()", () => {
-      let rewardTransaction, minerWallet;
+      let rewardTransaction;
+      let minerWallet;
 
       beforeEach(() => {
         minerWallet = new Wallet();

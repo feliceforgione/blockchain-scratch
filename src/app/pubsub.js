@@ -23,10 +23,9 @@ class PubSub {
   }
 
   subscribeToChannels = async () => {
-    //await this.subscriber.subscribe("BLOCKCHAIN", this.handleMessage);
-    Object.values(CHANNELS).forEach(
-      async (channel) =>
-        await this.subscriber.subscribe(channel, this.handleMessage)
+    // await this.subscriber.subscribe("BLOCKCHAIN", this.handleMessage);
+    Object.values(CHANNELS).forEach(async (channel) =>
+      this.subscriber.subscribe(channel, this.handleMessage)
     );
   };
 
@@ -34,14 +33,13 @@ class PubSub {
     console.log(`Message recieved. Channel: ${channel}.  Message: ${message}.`);
 
     const parsedMessage = JSON.parse(message);
-
+    const onSuccess = () => {
+      this.transactionPool.clearBlockchainTransactions({
+        chain: parsedMessage,
+      });
+    };
     switch (channel) {
       case CHANNELS.BLOCKCHAIN:
-        const onSuccess = () => {
-          this.transactionPool.clearBlockchainTransactions({
-            chain: parsedMessage,
-          });
-        };
         this.blockchain.replaceChain(parsedMessage, onSuccess);
         break;
       case CHANNELS.TRANSACTION:

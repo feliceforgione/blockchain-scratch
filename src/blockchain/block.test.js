@@ -1,7 +1,7 @@
 const hexToBinary = require("hex-to-binary");
-const Block = require("./block.js");
-const { GENESIS_DATA, MINE_RATE } = require("../config.js");
-const { cryptoHash } = require("../util/");
+const Block = require("./block");
+const { GENESIS_DATA, MINE_RATE } = require("../config");
+const { cryptoHash } = require("../util");
 
 describe("Block", () => {
   const timestamp = 2000;
@@ -53,8 +53,8 @@ describe("Block", () => {
 
   describe("mineBlock()", () => {
     const lastBlock = Block.genesis();
-    const data = "newData";
-    const minedBlock = Block.mineBlock({ lastBlock, data });
+    const newData = "newData";
+    const minedBlock = Block.mineBlock({ lastBlock, data: newData });
     it("returns a Block instance", () => {
       expect(minedBlock).toBeInstanceOf(Block);
     });
@@ -65,14 +65,14 @@ describe("Block", () => {
       expect(minedBlock.timestamp).not.toBe(undefined);
     });
     it("data is set to the new data", () => {
-      expect(minedBlock.data).toEqual(data);
+      expect(minedBlock.data).toEqual(newData);
     });
     it("creates  a SHA-256  hash based on the proper inputs", () => {
       expect(minedBlock.hash).toBe(
         cryptoHash(
           minedBlock.timestamp,
           lastBlock.hash,
-          data,
+          newData,
           minedBlock.nonce,
           minedBlock.difficulty
         )

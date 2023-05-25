@@ -1,5 +1,5 @@
-const Wallet = require("./");
-const { verifySignature } = require("../util/");
+const Wallet = require(".");
+const { verifySignature } = require("../util");
 const Transaction = require("./transaction");
 const Blockchain = require("../blockchain");
 const { STARTING_BALANCE } = require("../config");
@@ -56,7 +56,9 @@ describe("Wallet", () => {
     });
 
     describe("and the amount is valid", () => {
-      let transaction, amount, recipient;
+      let transaction;
+      let amount;
+      let recipient;
       beforeEach(() => {
         amount = 50;
         recipient = "foo-recipient";
@@ -112,7 +114,8 @@ describe("Wallet", () => {
       });
     });
     describe("and there are outputs for the wallet", () => {
-      let transactionOne, transactonTwo;
+      let transactionOne;
+      let transactonTwo;
 
       beforeEach(() => {
         transactionOne = new Wallet().createTransaction({
@@ -163,7 +166,8 @@ describe("Wallet", () => {
         });
 
         describe("and there are outputs next to and after the recent transaction", () => {
-          let sameBlockTransaction, nextBlockTransaction;
+          let sameBlockTransaction;
+          let nextBlockTransaction;
 
           beforeEach(() => {
             recentTransaction = wallet.createTransaction({

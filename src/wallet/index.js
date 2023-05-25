@@ -1,5 +1,5 @@
 const { STARTING_BALANCE } = require("../config");
-const { ec, cryptoHash } = require("../util/");
+const { ec, cryptoHash } = require("../util");
 const Transaction = require("./transaction");
 
 class Wallet {
@@ -18,14 +18,14 @@ class Wallet {
     for (let i = chain.length - 1; i > 0; i--) {
       const block = chain[i];
 
-      for (let transaction of block.data) {
+      for (const transaction of block.data) {
         if (transaction.input.address === address) {
           hasConductedTransaction = true;
         }
         const addressOutput = transaction.outputMap[address];
 
         if (addressOutput) {
-          outputsTotal = outputsTotal + addressOutput;
+          outputsTotal += addressOutput;
         }
       }
       if (hasConductedTransaction) {

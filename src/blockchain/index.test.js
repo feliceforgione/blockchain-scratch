@@ -1,11 +1,14 @@
 const Blockchain = require("./index");
 const Block = require("./block");
-const { cryptoHash } = require("../util/");
+const { cryptoHash } = require("../util");
 const Wallet = require("../wallet");
 const Transaction = require("../wallet/transaction");
 
 describe("Blockchain", () => {
-  let blockchain, newChain, originalChain, errorMock;
+  let blockchain;
+  let newChain;
+  let originalChain;
+  let errorMock;
   beforeEach(() => {
     blockchain = new Blockchain();
     newChain = new Blockchain();
@@ -93,6 +96,9 @@ describe("Blockchain", () => {
 
   describe("replaceChain()", () => {
     let logMock;
+    let wallet;
+    let transaction;
+    let rewardTransaction;
     beforeEach(() => {
       logMock = jest.fn();
       global.console.log = logMock;
@@ -121,11 +127,11 @@ describe("Blockchain", () => {
     });
     describe("when the new chain is longer", () => {
       beforeEach(() => {
-        transaction2 = wallet.createTransaction({
+        const transaction2 = wallet.createTransaction({
           recipient: "foo-address2",
           amount: 265,
         });
-        transaction3 = wallet.createTransaction({
+        const transaction3 = wallet.createTransaction({
           recipient: "foo-address3",
           amount: 365,
         });
@@ -161,7 +167,9 @@ describe("Blockchain", () => {
   });
 
   describe("validTransactionData()", () => {
-    let transaction, rewardTransaction, wallet;
+    let transaction;
+    let rewardTransaction;
+    let wallet;
 
     beforeEach(() => {
       wallet = new Wallet();

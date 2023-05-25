@@ -7,6 +7,7 @@ class TransactionMiner {
     this.wallet = wallet;
     this.pubsub = pubsub;
   }
+
   mineTransactions() {
     // get the transaction pool's valid transactions
     const validTransactions = this.transactionPool.validTransactions();
@@ -15,6 +16,7 @@ class TransactionMiner {
     const minerRewardTransaction = Transaction.rewardTransaction({
       minerWallet: this.wallet,
     });
+
     validTransactions.push(minerRewardTransaction);
 
     // add a block consisting of these transactions to the blockchain

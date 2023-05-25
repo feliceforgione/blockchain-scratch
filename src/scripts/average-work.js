@@ -1,11 +1,15 @@
-const Blockchain = require("../blockchain/");
+const Blockchain = require("../blockchain");
 const Block = require("../blockchain/block");
 
 const blockchain = new Blockchain();
 
 blockchain.addBlock({ data: "initial" });
 
-let prevTimestamp, nextTimestamp, nextBlock, timeDiff, average;
+let prevTimestamp;
+let nextTimestamp;
+let nextBlock;
+let timeDiff;
+let average;
 const times = [];
 
 for (let i = 1; i < 10000; i++) {

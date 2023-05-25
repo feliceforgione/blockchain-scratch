@@ -8,10 +8,13 @@
     "dev": "cross-env ENV='development' concurrently \"npm run dev-client\" \"nodemon index.js\"",
     "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
     "test": "jest --watchAll",
+    "test-coverage": "jest --coverage",
     "rdcli": "node ./node_modules/redis-cli/bin/rdcli",
     "build-client": "npm run clean && parcel build client/src/index.html --out-dir client/dist",
     "dev-client": "npm run clean && parcel client/src/index.html --out-dir client/dist",
-    "clean": "rm -rf .cache ./client/dist"
+    "clean": "rm -rf .cache ./client/dist",
+    "lint": "eslint .",
+    "prepare": "husky install"
   },
   "jest": {
     "testEnvironment": "node"
@@ -20,9 +23,20 @@
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "jest": "^23.6.0",
     "nodemon": "^2.0.22",
-    "redis-cli": "^2.1.2"
+    "prettier": "^2.8.8",
+    "redis-cli": "^2.1.2",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "axios": "^1.4.0",

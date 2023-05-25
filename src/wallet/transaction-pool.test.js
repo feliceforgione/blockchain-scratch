@@ -5,7 +5,9 @@ const Blockchain = require("../blockchain");
 const Block = require("../blockchain/block");
 
 describe("Transaction Pool", () => {
-  let transactionPool, transaction, senderWallet;
+  let transactionPool;
+  let transaction;
+  let senderWallet;
 
   beforeEach(() => {
     transactionPool = new TransactionPool();
@@ -36,7 +38,8 @@ describe("Transaction Pool", () => {
   });
 
   describe("validTransactions()", () => {
-    let validTransactions, errorMock;
+    let validTransactions;
+    let errorMock;
 
     beforeEach(() => {
       validTransactions = [];
@@ -85,7 +88,7 @@ describe("Transaction Pool", () => {
       const expectedTransactionMap = {};
 
       for (let i = 0; i < 6; i++) {
-        const transaction = new Wallet().createTransaction({
+        transaction = new Wallet().createTransaction({
           recipient: "foo",
           amount: 20,
         });
