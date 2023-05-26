@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-else-return */
 const Block = require("./block");
 const { cryptoHash } = require("../util");
 const { REWARD_INPUT, MINING_REWARD } = require("../config");
@@ -51,9 +49,8 @@ class Blockchain {
               "An identical transaction appears more than once in the block"
             );
             return false;
-          } else {
-            tranasactionSet.add(transaction);
           }
+          tranasactionSet.add(transaction);
         }
       }
     }

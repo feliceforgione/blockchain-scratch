@@ -15,6 +15,7 @@
     "clean": "rm -rf .cache ./client/dist",
     "lint": "eslint .",
     "lint-staged": "lint-staged --concurrent false",
+    "generate-docs": "jsdoc -c jsdoc.json",
     "prepare": "husky install"
   },
   "jest": {
@@ -35,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.0",
     "jest": "^23.6.0",
+    "jsdoc": "^4.0.2",
     "lint-staged": "^13.2.2",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8",

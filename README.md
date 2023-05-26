@@ -1,7 +1,7 @@
 <div id="top"></div>
 <!-- PROJECT LOGO -->
 <div align="center">
-<img width="30%" src="./client/src/assets/logo.png" alt="Logo">
+<img width="20%" src="./client/src/assets/logo.png" alt="Logo">
 
   <h1 align="center">Blockchain</h1>
 
@@ -21,8 +21,9 @@ Blockchain programmed from scratch.
 Ability to create blockchain, create transactions, mine transactions from transaction pool, add blocks to block chain, verify transactions and blockchain
 
 <br>
-<img width="100%" src="./screenshot.png" alt="Logo">  
-<br><br>
+<img width="70%" src="./screenshot.png" alt="Screnshot">  
+<br>  
+<br>
 
 ## Built With
 
@@ -43,7 +44,12 @@ Ability to create blockchain, create transactions, mine transactions from transa
 
 <br>
 
+## Documentation
+
+<a href="/docs/index.html">JDocs Documentation</a>
+<br>  
 <br>
+
 <!-- CONTACT -->
 
 ## Contact

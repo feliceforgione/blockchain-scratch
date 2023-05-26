@@ -4,3 +4,4 @@ redis
 testing
 client/dist
 coverage
+docs
