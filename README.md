@@ -21,7 +21,9 @@ Blockchain programmed from scratch.
 Ability to create blockchain, create transactions, mine transactions from transaction pool, add blocks to block chain, verify transactions and blockchain
 
 <br>
+<div align="center">
 <img width="70%" src="./screenshot.png" alt="Screnshot">  
+</div>
 <br>  
 <br>
 
@@ -46,7 +48,8 @@ Ability to create blockchain, create transactions, mine transactions from transa
 
 ## Documentation
 
-<a href="/docs/index.html">JDocs Documentation</a>
+<a href="/docs/index.html">JDocs Documentation</a>  
+Load the index.html file in a browser
 <br>  
 <br>
 
